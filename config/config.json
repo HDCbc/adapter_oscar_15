@@ -1,0 +1,22 @@
+{
+  "export": true,
+  "exportDir": "/tmp/",
+  "compress": false,
+  "source": {
+    "dialect": "mysql",
+    "host": "db",
+    "port": 3306,
+    "connectionLimit": 30,
+    "user": "hdc_adapter",
+    "password": "hdc_adapter"
+  },
+  "import": true,
+  "target": {
+    "host": "target",
+    "port": 5432,
+    "database": "vault",
+    "max": 30,
+    "idleTimeoutMillis": 30000
+  },
+  "logLevel": "verbose"
+}

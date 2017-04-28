@@ -1,0 +1,30 @@
+version: '2'
+services:
+  adapter:
+    image:
+      hdcbc/adapter:develop
+    command:
+      npm run-script start -- --configFile /tmp/config/config.json --mappingFile /tmp/config/mapping.js --source:database $SOURCE_DB --target:database $TARGET_DATABASE --target:user $TARGET_USER --target:password $TARGET_PASSWORD
+    links:
+      - db
+    volumes:
+      - ./config/mapping.js:/tmp/config/mapping.js
+      - ./config/config.json:/tmp/config/config.json
+      - data-volume:/tmp/:rw
+    extra_hosts:
+      - "target:$TARGET_HOST"
+  db:
+    image:
+      mysql:5.5
+    command:
+      mysqld --secure-file-priv="" --sync_binlog=2 --innodb_flush_log_at_trx_commit=2 --innodb_log_file_size="256M" --innodb_flush_method="O_DIRECT" --innodb_buffer_pool_size="1000M"
+    environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD=true
+    volumes:
+      - ./sql/pre.sql:/docker-entrypoint-initdb.d/1-pre.sql
+      - $IMPORT_PATH:/docker-entrypoint-initdb.d/2-restore.sql
+      - ./sql/post.sql:/docker-entrypoint-initdb.d/3-post.sql
+#      - ./config/adapter.cnf:/etc/mysql/conf.d/adapter.cnf
+      - data-volume:/tmp/:rw
+volumes:
+  data-volume:
