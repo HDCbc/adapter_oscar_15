@@ -1059,7 +1059,7 @@ module.exports = [
         p.id AS emr_id,
         p.creation_date AS emr_effective_date,
         NULL AS emr_reference
-      FROM oscar_15.preventions AS p`,
+      FROM oscar.preventions AS p`,
   },
   // {
   //   target: 'EntryAttribute',
@@ -1087,8 +1087,8 @@ module.exports = [
         p.id AS emr_id,
         p.creation_date AS emr_effective_date,
         NULL AS emr_reference
-      FROM oscar_15.preventions AS p
-      LEFT OUTER JOIN oscar_15.preventionsExt AS pe
+      FROM oscar.preventions AS p
+      LEFT OUTER JOIN oscar.preventionsExt AS pe
         ON p.id = pe.prevention_id
         AND pe.keyval = 'dose'`,
   },
@@ -1118,7 +1118,7 @@ module.exports = [
         p.id AS emr_id,
         p.creation_date AS emr_effective_date,
         NULL AS emr_reference
-      FROM oscar_15.preventions AS p`,
+      FROM oscar.preventions AS p`,
   },
   {
     target: 'EntryAttribute',
@@ -1139,8 +1139,8 @@ module.exports = [
         p.id AS emr_id,
         p.creation_date AS emr_effective_date,
         NULL AS emr_reference
-      FROM oscar_15.preventions AS p
-      LEFT OUTER JOIN oscar_15.preventionsExt AS pe
+      FROM oscar.preventions AS p
+      LEFT OUTER JOIN oscar.preventionsExt AS pe
         ON p.id = pe.prevention_id
         AND pe.keyval = 'neverReason'`,
   },
@@ -1170,8 +1170,8 @@ module.exports = [
         p.id AS emr_id,
         p.creation_date AS emr_effective_date,
         NULL AS emr_reference
-      FROM oscar_15.preventions AS p
-      LEFT OUTER JOIN oscar_15.preventionsExt AS pe
+      FROM oscar.preventions AS p
+      LEFT OUTER JOIN oscar.preventionsExt AS pe
         ON p.id = pe.prevention_id
         AND pe.keyval = 'location'`,
   },
@@ -1194,8 +1194,8 @@ module.exports = [
         p.id AS emr_id,
         p.creation_date AS emr_effective_date,
         NULL AS emr_reference
-      FROM oscar_15.preventions AS p
-      LEFT OUTER JOIN oscar_15.preventionsExt AS pe
+      FROM oscar.preventions AS p
+      LEFT OUTER JOIN oscar.preventionsExt AS pe
         ON p.id = pe.prevention_id
         AND pe.keyval = 'route'`,
   },
@@ -1218,8 +1218,8 @@ module.exports = [
         p.id AS emr_id,
         p.creation_date AS emr_effective_date,
         NULL AS emr_reference
-      FROM oscar_15.preventions AS p
-      LEFT OUTER JOIN oscar_15.preventionsExt AS pe
+      FROM oscar.preventions AS p
+      LEFT OUTER JOIN oscar.preventionsExt AS pe
         ON p.id = pe.prevention_id
         AND pe.keyval = 'lot'`,
   },
@@ -1269,7 +1269,7 @@ module.exports = [
         d.drugid AS emr_id,
         d.lastUpdateDate AS emr_effective_date,
         NULL AS emr_reference
-      FROM oscar_15.drugs AS d`,
+      FROM oscar.drugs AS d`,
   },
 /*
   {
@@ -1291,7 +1291,7 @@ module.exports = [
         d.drugid AS emr_id,
         d.lastUpdateDate AS emr_effective_date,
         NULL AS emr_reference
-      FROM oscar_15.drugs AS d
+      FROM oscar.drugs AS d
       JOIN drugref.cd_drug_product AS p
         ON d.regional_identifier = p.drug_identification_number
       JOIN drugref.cd_therapeutic_class AS t
@@ -1317,8 +1317,8 @@ module.exports = [
         d.drugid AS emr_id,
         d.lastUpdateDate AS emr_effective_date,
         NULL AS emr_reference
-      FROM oscar_15.drugs AS d
-      JOIN oscar_15.provider AS p
+      FROM oscar.drugs AS d
+      JOIN oscar.provider AS p
         ON d.provider_no = p.provider_no`,
   },
   {
@@ -1340,7 +1340,7 @@ module.exports = [
         d.drugid AS emr_id,
         d.lastUpdateDate AS emr_effective_date,
         NULL AS emr_reference
-      FROM oscar_15.drugs AS d`,
+      FROM oscar.drugs AS d`,
   },
   {
     target: 'EntryAttribute',
@@ -1361,7 +1361,7 @@ module.exports = [
         d.drugid AS emr_id,
         d.lastUpdateDate AS emr_effective_date,
         NULL AS emr_reference
-      FROM oscar_15.drugs AS d`,
+      FROM oscar.drugs AS d`,
   },
   // {
   //   target: 'EntryAttribute',
@@ -1396,7 +1396,7 @@ module.exports = [
         d.drugid AS emr_id,
         d.lastUpdateDate AS emr_effective_date,
         NULL AS emr_reference
-      FROM oscar_15.drugs AS d`,
+      FROM oscar.drugs AS d`,
   },
   {
     target: 'EntryAttribute',
@@ -1417,7 +1417,7 @@ module.exports = [
         d.drugid AS emr_id,
         d.lastUpdateDate AS emr_effective_date,
         NULL AS emr_reference
-      FROM oscar_15.drugs AS d`,
+      FROM oscar.drugs AS d`,
   },
   // {
   //   target: 'EntryAttribute',
@@ -1445,7 +1445,7 @@ module.exports = [
         d.drugid AS emr_id,
         d.lastUpdateDate AS emr_effective_date,
         NULL AS emr_reference
-      FROM oscar_15.drugs AS d`,
+      FROM oscar.drugs AS d`,
   },
   {
     target: 'EntryAttribute',
@@ -1470,7 +1470,7 @@ module.exports = [
         d.drugid AS emr_id,
         d.lastUpdateDate AS emr_effective_date,
         NULL AS emr_reference
-      FROM oscar_15.drugs AS d`,
+      FROM oscar.drugs AS d`,
   },
   {
     target: 'EntryAttribute',
@@ -1491,7 +1491,7 @@ module.exports = [
         d.drugid AS emr_id,
         d.lastUpdateDate AS emr_effective_date,
         NULL AS emr_reference
-      FROM oscar_15.drugs AS d`,
+      FROM oscar.drugs AS d`,
   },
   // {
   //   target: 'EntryAttribute',
@@ -1519,7 +1519,7 @@ module.exports = [
         d.drugid AS emr_id,
         d.lastUpdateDate AS emr_effective_date,
         NULL AS emr_reference
-      FROM oscar_15.drugs AS d`,
+      FROM oscar.drugs AS d`,
   },
   {
     target: 'EntryAttribute',
@@ -1561,7 +1561,7 @@ module.exports = [
         d.drugid AS emr_id,
         d.lastUpdateDate AS emr_effective_date,
         NULL AS emr_reference
-      FROM oscar_15.drugs AS d`,
+      FROM oscar.drugs AS d`,
   },
   {
     target: 'EntryAttribute',
@@ -1592,7 +1592,7 @@ module.exports = [
         d.drugid AS emr_id,
         d.lastUpdateDate AS emr_effective_date,
         NULL AS emr_reference
-      FROM oscar_15.drugs AS d`,
+      FROM oscar.drugs AS d`,
   },
   {
     target: 'EntryAttribute',
@@ -1613,7 +1613,7 @@ module.exports = [
         d.drugid AS emr_id,
         d.lastUpdateDate AS emr_effective_date,
         NULL AS emr_reference
-      FROM oscar_15.drugs AS d`,
+      FROM oscar.drugs AS d`,
   },
   {
     target: 'EntryAttribute',
@@ -1640,7 +1640,7 @@ module.exports = [
         d.drugid AS emr_id,
         d.lastUpdateDate AS emr_effective_date,
         NULL AS emr_reference
-      FROM oscar_15.drugs AS d`,
+      FROM oscar.drugs AS d`,
   },
   {
     target: 'EntryAttribute',
@@ -1661,7 +1661,7 @@ module.exports = [
         d.drugid AS emr_id,
         d.lastUpdateDate AS emr_effective_date,
         NULL AS emr_reference
-      FROM oscar_15.drugs AS d`,
+      FROM oscar.drugs AS d`,
   },
   {
     target: 'EntryAttribute',
@@ -1682,7 +1682,7 @@ module.exports = [
         d.drugid AS emr_id,
         d.lastUpdateDate AS emr_effective_date,
         NULL AS emr_reference
-      FROM oscar_15.drugs AS d`,
+      FROM oscar.drugs AS d`,
   },
 ];
 

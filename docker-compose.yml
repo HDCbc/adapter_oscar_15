@@ -4,7 +4,7 @@ services:
     image:
       hdcbc/adapter:develop
     command:
-      npm run-script start -- --configFile /tmp/config/config.json --mappingFile /tmp/config/mapping.js --source:database $SOURCE_DB --target:database $TARGET_DATABASE --target:user $TARGET_USER --target:password $TARGET_PASSWORD
+      npm run-script start -- --configFile /tmp/config/config.json --mappingFile /tmp/config/mapping.js --source:database oscar --target:database $TARGET_DATABASE --target:user $TARGET_USER --target:password $TARGET_PASSWORD
     links:
       - db
     volumes:
@@ -19,12 +19,11 @@ services:
     command:
       mysqld --secure-file-priv="" --sync_binlog=2 --innodb_flush_log_at_trx_commit=2 --innodb_log_file_size="256M" --innodb_flush_method="O_DIRECT" --innodb_buffer_pool_size="1000M"
     environment:
-      - MYSQL_RANDOM_ROOT_PASSWORD=true
+      - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
     volumes:
-      - ./sql/pre.sql:/docker-entrypoint-initdb.d/1-pre.sql
-      - $IMPORT_PATH:/docker-entrypoint-initdb.d/2-restore.sql
-      - ./sql/post.sql:/docker-entrypoint-initdb.d/3-post.sql
-#      - ./config/adapter.cnf:/etc/mysql/conf.d/adapter.cnf
+      - ./sh/init.sh:/docker-entrypoint-initdb.d/init.sh
+      - $OSCAR_BACKUP_PATH:/sql/oscar_backup.sql
+      - $DRUGREF_BACKUP_PATH:/sql/drugref_backup.sql
       - data-volume:/tmp/:rw
 volumes:
   data-volume:
