@@ -1053,7 +1053,7 @@ module.exports = [
         NULL AS code_system,
         NULL AS code_value,
         NULL AS text_value,
-        p.prevention_date AS date_value,
+        CASE WHEN p.prevention_date = '0000-00-00' THEN NULL ELSE p.prevention_date END AS date_value,
         NULL as boolean_value,
         NULL as numeric_value,
         p.id AS emr_id,
@@ -1246,7 +1246,7 @@ module.exports = [
         'drugs' as source_table,
         drugid as emr_id,
         null as state,
-        written_date as effective_date,
+        case when written_date = '0000-00-00' then null else written_date end as effective_date,
         null as emr_reference
       from drugs`,
   },
@@ -1271,6 +1271,7 @@ module.exports = [
         NULL AS emr_reference
       FROM oscar_15.drugs AS d`,
   },
+/*
   {
     target: 'EntryAttribute',
     attributeId: '012.002',
@@ -1296,6 +1297,7 @@ module.exports = [
       JOIN drugref.cd_therapeutic_class AS t
         ON p.drug_code = t.drug_code`,
   },
+*/
   {
     target: 'EntryAttribute',
     attributeId: '012.003',
@@ -1607,7 +1609,7 @@ module.exports = [
         NULL AS text_value,
         NULL AS date_value,
         NULL as boolean_value,
-        duration as numeric_value,
+        CASE WHEN duration = '' or duration = 'null' THEN NULL ELSE duration END as numeric_value,
         d.drugid AS emr_id,
         d.lastUpdateDate AS emr_effective_date,
         NULL AS emr_reference
@@ -1655,7 +1657,7 @@ module.exports = [
         NULL AS text_value,
         NULL AS date_value,
         NULL as boolean_value,
-        d.quantity as numeric_value,
+        CASE WHEN quantity = '' or quantity = 'null' THEN NULL ELSE quantity END as numeric_value,
         d.drugid AS emr_id,
         d.lastUpdateDate AS emr_effective_date,
         NULL AS emr_reference
